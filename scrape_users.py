@@ -8,14 +8,13 @@ Write dataset to mongoDB with the scraped data
 """
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import ElementNotInteractableException
-from utils import init_driver, get_profile_urls, login,\
-    print_scraped_data, load_config,\
+from utils import init_driver, get_profile_urls, login, \
+    print_scraped_data, load_config, \
     get_unseen_urls, connect_mongo
 from time import sleep
 from classes.UserScraper import UserScraper
 import argparse
 import sys
-
 
 parser = argparse.ArgumentParser(
     description=("Scrape linkedin profiles based on the " +
@@ -41,9 +40,9 @@ LINPWD = credentials["LINPWD"]
 MONGOUSER = credentials["MONGOUSER"]
 MONGOPWD = credentials["MONGOPWD"]
 HOST = parameters["HOST"]
-client = connect_mongo(HOST, MONGOUSER, MONGOPWD)
-db = client["linkedin"]
-users = db["users"]
+# client = connect_mongo(HOST, MONGOUSER, MONGOPWD)
+# db = client["linkedin"]
+# users = db["users"]
 driver = init_driver(CHROME_PATH, CHROMEDRIVER_PATH)
 driver.get("https://www.linkedin.com")
 login(driver, LINUSERNAME, LINPWD)
@@ -67,19 +66,19 @@ for query in QUERIES:
         print("Please double-check that Google is not " +
               "blocking the query")
         continue
-    unseen_urls = get_unseen_urls(users, profile_urls)
-    if len(unseen_urls) != 0:
-        print("INFO :: Resuming from URL", unseen_urls[0])
-    else:
-        print("INFO :: All URLs from " + str(N_PAGES) +
-              " Google-search page(s) for the query " + query +
-              " have already been scraped. " +
-              "Moving onto the next query if any.")
-        continue
-    for url in unseen_urls:
+    # unseen_urls = get_unseen_urls(users, profile_urls)
+    # if len(unseen_urls) != 0:
+    #     print("INFO :: Resuming from URL", unseen_urls[0])
+    # else:
+    #     print("INFO :: All URLs from " + str(N_PAGES) +
+    #           " Google-search page(s) for the query " + query +
+    #           " have already been scraped. " +
+    #           "Moving onto the next query if any.")
+    #     continue
+    for url in profile_urls:
         user_data = us.scrape_user(query, url)
-        if user_data and\
-           not db["users"].count_documents(user_data, limit=1):
-            print_scraped_data(user_data)
-            users.insert_one(user_data)
+        # if user_data and\
+        #    not db["users"].count_documents(user_data, limit=1):
+        print_scraped_data(user_data)
+        # users.insert_one(user_data)
 driver.quit()

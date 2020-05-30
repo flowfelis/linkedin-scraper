@@ -263,7 +263,7 @@ def get_unseen_urls(collection, urls):
     Return a list of URLs which have not already been scraped.
 
     :param collection: Mongo DB collection
-    :param urls: lsit of URLs to check
+    :param urls: list of URLs to check
     :return: list of unseen URLs
     """
     scraped_urls = [entry["URL"] for entry in collection.find()]

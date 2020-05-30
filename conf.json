@@ -1,25 +1,24 @@
 {
-    "parameters": {
-        "CHROMEDRIVER_PATH": "/path/to/chromedriver",
-        "CHROME_PATH": "/path/to/chrome-executable",
-        "LOG_DIRECTORY": "./logdir/",
-        "N_PAGES": 1,
-	"USER_QUERIES": [
-	    "site:it.linkedin.com/in/ AND \"giurisprudenza\"",
-	    "site:it.linkedin.com/in/ AND \"archeologia\"",
-	    "site:it.linkedin.com/in/ AND \"biotecnologia\""
-        ],
-	"JOB_QUERIES": [
-	    "laurea giurisprudenza",
-	    "laurea archeologia",
-	    "laurea biotecnologia"
-        ],
-        "HOST": "@mongo_host"
-    },
-    "credentials": {
-        "LINUSERNAME": "user@email.com",
-        "LINPWD": "linkedinpwd",
-        "MONGOUSER": "mongouser",
-        "MONGOPWD": "mongopwd"
-    }
+  "parameters": {
+    "CHROMEDRIVER_PATH": "/Users/puma/Downloads/chromedriver",
+    "CHROME_PATH": "/Applications/Google Chrome.app",
+    "LOG_DIRECTORY": "./logdir/",
+    "N_PAGES": 1,
+    "USER_QUERIES": [
+      "site:it.linkedin.com/in/ AND \"mehmeteminaydin\"",
+      "site:it.linkedin.com/in/ AND \"alican-dönmez-00549098\""
+    ],
+    "JOB_QUERIES": [
+      "laurea giurisprudenza",
+      "laurea archeologia",
+      "laurea biotecnologia"
+    ],
+    "HOST": "@mongo_host"
+  },
+  "credentials": {
+    "LINUSERNAME": "alicand96@gmail.com",
+    "LINPWD": "secret1234",
+    "MONGOUSER": "mongouser",
+    "MONGOPWD": "mongopwd"
+  }
 }
